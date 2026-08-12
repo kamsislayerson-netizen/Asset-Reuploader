@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/retry"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
 )
 
 func GetRequest(c *roblox.Client, url string) (*bytes.Buffer, error) {

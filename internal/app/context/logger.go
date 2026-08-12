@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/kartFr/Asset-Reuploader/internal/color"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/color"
 )
 
 type logger struct {

@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
 )
 
 var ErrBodyTooLarge = errors.New("batch request body is too large")

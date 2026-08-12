@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/permissions"
-	"github.com/kartFr/Asset-Reuploader/internal/app/config"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/color"
-	"github.com/kartFr/Asset-Reuploader/internal/console"
-	"github.com/kartFr/Asset-Reuploader/internal/files"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/permissions"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/config"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/color"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/console"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/files"
 )
 
 var cookieFile = config.Get("cookie_file")

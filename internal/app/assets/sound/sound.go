@@ -9,23 +9,23 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/assetutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/uploaderror"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/atomicarray"
-	"github.com/kartFr/Asset-Reuploader/internal/color"
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/assetdelivery"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/assets"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/games"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/publish"
-	"github.com/kartFr/Asset-Reuploader/internal/shardedmap"
-	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/assetutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/uploaderror"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/response"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/atomicarray"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/color"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/retry"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/assetdelivery"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/assets"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/develop"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/games"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/publish"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/shardedmap"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/taskqueue"
 )
 
 const assetTypeID int32 = 3
@@ -82,8 +82,10 @@ func Reupload(ctx *context.Context, r *request.Request) {
 	creatorPlaceMap := shardedmap.New[*atomicarray.AtomicArray[int64]]()
 	creatorMutexMap := shardedmap.New[*sync.RWMutex]()
 
-	uploadQueue := taskqueue.New[int64](time.Minute, 120)
-	permissionQueue := taskqueue.New[*assets.PermissionResponse](time.Minute, 60)
+	// Rate limit: 15 requests per minute for steady, reliable uploads
+	uploadQueue := taskqueue.New[int64](time.Minute, 15)
+	// Rate limit: 8 requests per minute for permissions
+	permissionQueue := taskqueue.New[*assets.PermissionResponse](time.Minute, 8)
 	permissionRequest := assetutils.NewPermissionBodyFromIds([]int64{r.UniverseID})
 
 	logger.Println("Reuploading sounds...")

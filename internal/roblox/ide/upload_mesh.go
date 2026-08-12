@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
 )
 
 var once sync.Once

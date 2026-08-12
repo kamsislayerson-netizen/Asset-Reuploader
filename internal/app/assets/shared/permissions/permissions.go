@@ -3,11 +3,11 @@ package permissions
 import (
 	"errors"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/groups"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/develop"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/groups"
 )
 
 var (

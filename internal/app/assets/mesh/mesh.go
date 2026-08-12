@@ -9,17 +9,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/assetutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/uploaderror"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/assetdelivery"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/ide"
-	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/assetutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/uploaderror"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/response"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/retry"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/assetdelivery"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/develop"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/ide"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/taskqueue"
 )
 
 const assetTypeID int32 = 4
@@ -41,7 +41,8 @@ func Reupload(ctx *context.Context, r *request.Request) {
 	}
 
 	filter := assetutils.NewFilter(ctx, r, assetTypeID)
-	uploadQueue := taskqueue.New[int64](time.Minute, 3000)
+	// Rate limit: 10 requests per minute for steady, reliable uploads
+	uploadQueue := taskqueue.New[int64](time.Minute, 10)
 
 	logger.Println("Reuploading meshes...")
 

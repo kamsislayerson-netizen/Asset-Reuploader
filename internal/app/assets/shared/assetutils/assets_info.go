@@ -4,12 +4,12 @@ import (
 	"net"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/retry"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox/develop"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/taskqueue"
 )
 
 const AssetsInfoChunkSize int = 50

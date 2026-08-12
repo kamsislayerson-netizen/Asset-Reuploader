@@ -4,20 +4,22 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/animation"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/mesh"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/permissions"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/sound"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/console"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/animation"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/image"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/mesh"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/shared/permissions"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/assets/sound"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/context"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/request"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/app/response"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/console"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
 )
 
 var assetModules = map[string]func(ctx *context.Context, r *request.Request){
 	"Animation": animation.Reupload,
+	"Image":     image.Reupload,
 	"Mesh":      mesh.Reupload,
 	"Sound":     sound.Reupload,
 }

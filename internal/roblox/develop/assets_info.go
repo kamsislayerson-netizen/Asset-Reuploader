@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kamsislayerson-netizen/Asset-Reuploader/internal/roblox"
 )
 
 type AssetInfo struct {
