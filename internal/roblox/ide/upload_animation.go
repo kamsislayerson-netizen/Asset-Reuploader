@@ -58,12 +58,18 @@ func NewUploadAnimationHandler(
 	groupID ...int64,
 ) (func() (int64, error), error) {
 	group := groupID[0]
-	req, err := newUploadAnimationRequest(group, name, description, data)
-	if err != nil {
-		return func() (int64, error) { return 0, nil }, err
-	}
+	// Store the data bytes to allow resetting for retries
+	dataBytes := data.Bytes()
 
 	return func() (int64, error) {
+		// Create a fresh request with a new reader for each attempt
+		url := newAnimationURL(group, name, description)
+		req, err := http.NewRequest("POST", url, bytes.NewReader(dataBytes))
+		if err != nil {
+			return 0, err
+		}
+		req.Header.Set("User-Agent", "RobloxStudio/WinInet")
+		req.Header.Set("Content-Type", "application/octet-stream")
 		req.AddCookie(&http.Cookie{
 			Name:  ".ROBLOSECURITY",
 			Value: c.Cookie,
